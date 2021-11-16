@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainApp from "./Component/MainApp";
+import Login from './Component/Login';
+import SignUp from './Component/SignUp';
+import { createContext, useEffect, useState } from 'react';
+
+export const setStatusContext = createContext();
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [currentUserNum, setCurrentUserNum] = useState();
+  
+  const value = {
+    isLogin, setIsLogin,
+    isSignUp, setIsSignUp,
+    currentUserNum, setCurrentUserNum
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <setStatusContext.Provider value={value}>
+      {isLogin && <MainApp />}
+      {isLogin || (
+        <>
+          {isSignUp ? <SignUp /> : <Login />}
+        </>
+      )}
+    </setStatusContext.Provider>
+    </>
   );
 }
 

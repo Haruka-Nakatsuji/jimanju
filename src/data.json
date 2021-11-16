@@ -1,0 +1,7 @@
+{
+  "users": [
+    {"name": "うんちょ", "id": "uncho", "pass": "1", "icon": ""},
+    {"name": "うんちょ2", "id": "uncho2", "pass": "2", "icon": ""},
+    {"name": "うんち3", "id": "uncho3", "pass": "3", "icon": ""}
+  ]
+}
